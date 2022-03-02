@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  height: 6rem;
+  background-color: rgb(42, 114, 209);
+  width: 100vw;
+  justify-content: center;
+  align-items: flex-end;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  background-color: rgb(42, 114, 209);
+}
+
+.menu li {
+    margin: 0.3rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color: rgb(221, 248, 230);
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+}
