@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { UserContext } from "../../App";
 import styles from "./Product.module.css";
 import { FiTrash2, FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 
@@ -13,6 +14,13 @@ const Product = ({
   deleteBtn,
 }) => {
   console.log("product.js product");
+  useEffect(() => {
+    console.log("product.js milad");
+  }, []);
+
+  const user = useContext(UserContext);
+  console.log(user);
+
   return (
     <div className={styles.container}>
       <p>{title}</p>
