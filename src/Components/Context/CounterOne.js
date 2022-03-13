@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import { NumberContext, NumberContextDispatcher } from "./CounterProvider";
+import { useNumber, useSetNumber } from "./CounterProvider";
 
 const CounterOne = () => {
-  const number = useContext(NumberContext);
-  const setNumber = useContext(NumberContextDispatcher);
+  const number = useNumber();
+  const [oneHandler, twoHandler] = useSetNumber();
+
   return (
     <div>
-      <h3>{number}</h3>
-      <h3>{setNumber}</h3>
+      <button onClick={oneHandler}>Count:{number}</button>
+      <button onClick={twoHandler}>Count:{number}</button>
     </div>
   );
 };

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 
 export const NumberContext = React.createContext();
-export const NumberContextDispatcher = React.createContext();
+const NumberContextDispatcher = React.createContext();
 
 const CounterProvider = ({ children }) => {
+  const [number, setNumber] = useState(0);
   return (
-    <NumberContext.Provider value={"milad"}>
-      <NumberContextDispatcher.Provider value={"rastgoo"}>
+    <NumberContext.Provider value={number}>
+      <NumberContextDispatcher.Provider value={setNumber}>
         {children}
       </NumberContextDispatcher.Provider>
     </NumberContext.Provider>
@@ -14,3 +15,23 @@ const CounterProvider = ({ children }) => {
 };
 
 export default CounterProvider;
+
+export const useNumber = () => {
+  return useContext(NumberContext);
+};
+export const useSetNumber = () => {
+  const setNumber = useContext(NumberContextDispatcher);
+  const oneHandler = () => {
+    setNumber((item) => {
+      return item + 2;
+    });
+  };
+
+  const twoHandler = () => {
+    setNumber((item) => {
+      return item * 10;
+    });
+  };
+
+  return [oneHandler, twoHandler];
+};
