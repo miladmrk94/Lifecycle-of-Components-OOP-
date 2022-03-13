@@ -136,10 +136,20 @@
 
 // export default App;
 
-import React from "react";
+import React, { useContext } from "react";
+import CounterOne from "./Components/Context/CounterOne";
+
+import CounterProvider from "./Components/Context/CounterProvider";
 
 const App = () => {
-  return <div>OK ok ok</div>;
+  return (
+    <div>
+      Hi
+      <CounterProvider>
+        <CounterOne />
+      </CounterProvider>
+    </div>
+  );
 };
 
 export default App;
