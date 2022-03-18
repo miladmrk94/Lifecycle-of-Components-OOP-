@@ -1,31 +1,15 @@
-import React, { useEffect, useContext } from "react";
-import { UserContext } from "../../App";
+import React, { useEffect } from "react";
 import styles from "./Product.module.css";
 import { FiTrash2, FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 
-const Product = ({
-  title,
-  price,
-  textInput,
-  value,
-  quantity,
-  plusBtn,
-  minusBtn,
-  deleteBtn,
-}) => {
-  console.log("product.js product");
-  useEffect(() => {
-    console.log("product.js milad");
-  }, []);
-
-  const user = useContext(UserContext);
-  console.log(user);
+const Product = ({ title, price, quantity, plusBtn, minusBtn, deleteBtn }) => {
+  useEffect(() => {}, []);
 
   return (
     <div className={styles.container}>
-      <p>{title}</p>
+      <p className={styles.title}>{title}</p>
       <p>{price}</p>
-      <input onChange={textInput} className={styles.input} />
+      {/* <input onChange={textInput} className={styles.input} /> */}
       <span>{quantity}</span>
       <button onClick={plusBtn} className={styles.plusBtn}>
         <FiPlusCircle className={styles.icon} size="1.2rem" />

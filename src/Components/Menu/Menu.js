@@ -1,7 +1,8 @@
 import React from "react";
+import { useProducts } from "../Provider/ProductProvider";
 import styles from "./Menu.module.css";
-const Menu = (props) => {
-  console.log("Menu.js render");
+const Menu = () => {
+  const item = useProducts();
 
   return (
     <menu className={styles.container}>
@@ -9,7 +10,7 @@ const Menu = (props) => {
         <li>Home</li>
         <li>About</li>
         <li>Phono</li>
-        <li>Card:{props.card}</li>
+        <li>Card:{item.length}</li>
       </ul>
     </menu>
   );

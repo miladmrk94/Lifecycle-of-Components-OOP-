@@ -1,90 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
+import CounterOne from "./Components/Context/CounterOne";
 import Menu from "./Components/Menu/Menu";
+import FilterComp from "./Components/Products/FilterComp";
 import ProductList from "./Components/Products/ProductList";
-import Wrapper from "./Components/hoc/Wrapper";
-
-export const UserContext = React.createContext();
-
+import ProductProvider from "./Components/Provider/ProductProvider";
 const App = () => {
-  const [item, setItem] = useState([
-    { title: "Book 1", price: "200$", id: 0, quantity: 1 },
-    { title: "Book 2", price: "300$", id: 1, quantity: 1 },
-    { title: "Book 3", price: "100$", id: 2, quantity: 1 },
-    { title: "Book 4", price: "500$", id: 3, quantity: 1 },
-  ]);
-
-  const textInputHandler = (e, id) => {
-    const findIndex = item.findIndex((item) => {
-      return item.id === id;
-    });
-    const selectProduct = { ...item[findIndex] };
-    selectProduct.title = e.target.value;
-    const products = [...item];
-    products[findIndex] = selectProduct;
-    console.log(products);
-    setItem(products);
-  };
-
-  const deleteHandler = (id) => {
-    const filterProducts = item.filter((item) => {
-      return item.id !== id;
-    });
-    setItem(filterProducts);
-  };
-
-  const quantityAddHandler = (id) => {
-    const findIndexProduct = item.findIndex((item) => {
-      return item.id === id;
-    });
-    console.log(findIndexProduct);
-    const productByIndex = { ...item[findIndexProduct] };
-    productByIndex.quantity++;
-    const products = [...item];
-    products[findIndexProduct] = productByIndex;
-    setItem(products);
-  };
-
-  const quantityMinusHandler = (id) => {
-    let indexProduct = item.findIndex((item) => {
-      return item.id === id;
-    });
-    const selectProduct = { ...item[indexProduct] };
-
-    if (selectProduct.quantity <= 1) {
-      const filterProducts = item.filter((item) => {
-        return item.id !== id;
-      });
-      setItem(filterProducts);
-    } else {
-      selectProduct.quantity--;
-      const products = [...item];
-      products[indexProduct] = selectProduct;
-      setItem(products);
-    }
-  };
-
   return (
-    <div>
-      <UserContext.Provider value={"milad rastgooooooo"}>
+    <ProductProvider>
+      <div>
         <header>
-          <Menu card={item.length} />
+          <Menu />
+          <FilterComp />
         </header>
         <section>
-          <ProductList
-            product={item}
-            textInput={textInputHandler}
-            plusBtn={quantityAddHandler}
-            minusBtn={quantityMinusHandler}
-            deleteBtn={deleteHandler}
-          />
+          <ProductList />
         </section>
-      </UserContext.Provider>
-    </div>
+        <CounterOne />
+      </div>
+    </ProductProvider>
   );
 };
 
-export default Wrapper(App, "container");
+export default App;
 
 // import React, { Component } from "react";
 // import HocBTN from "./Components/hoc/testHOC/HocBTN";
