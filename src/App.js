@@ -11,7 +11,7 @@ const App = () => {
       <div>
         <header>
           <Menu />
-          {/* <FilterComp /> */}
+          <FilterComp />
         </header>
         <section>
           <ProductList />
